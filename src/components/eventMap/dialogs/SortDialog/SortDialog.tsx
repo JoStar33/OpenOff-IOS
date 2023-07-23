@@ -1,4 +1,3 @@
-import Icon from 'components/common/Icon/Icon';
 import Text from 'components/common/Text/Text';
 import { Modal, Pressable, TouchableOpacity, View } from 'react-native';
 import sortDialogStyles from './SortDialog.style';
@@ -41,14 +40,14 @@ const SortDialog = ({ dialogShow, value, setValue, handleDialog }: Props) => {
             >
               날짜순
             </Text>
-            {value === 'date' && (
-              <Icon
-                style={sortDialogStyles.checkIcon}
-                size={15}
-                name="IconCheck"
-                fill="main"
-              />
-            )}
+            {/* {value === 'date' && (
+              // <Icon
+              //   style={sortDialogStyles.checkIcon}
+              //   size={15}
+              //   name="IconCheck"
+              //   fill="main"
+              // />
+            )} */}
           </TouchableOpacity>
           <TouchableOpacity
             style={sortDialogStyles.buttonContainer}
@@ -61,14 +60,14 @@ const SortDialog = ({ dialogShow, value, setValue, handleDialog }: Props) => {
             >
               거리순
             </Text>
-            {value === 'distance' && (
-              <Icon
-                style={sortDialogStyles.checkIcon}
-                size={15}
-                name="IconCheck"
-                fill="main"
-              />
-            )}
+            {/* {value === 'distance' && (
+              // <Icon
+              //   style={sortDialogStyles.checkIcon}
+              //   size={15}
+              //   name="IconCheck"
+              //   fill="main"
+              // />
+            )} */}
           </TouchableOpacity>
           <View style={sortDialogStyles.cancelContainer}>
             <TouchableOpacity onPress={handleDialog}>

@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { colors } from 'styles/theme';
+import { colors, fonts } from 'styles/theme';
 
 const carouselCardStyle = StyleSheet.create({
   container: {
@@ -30,7 +30,8 @@ const carouselCardStyle = StyleSheet.create({
     borderColor: colors.white,
   },
   pageInfo: {
-    height: 16,
+    fontFamily: fonts.regular,
+    fontSize: 10,
     width: 30,
     position: 'absolute',
     justifyContent: 'center',
@@ -39,6 +40,10 @@ const carouselCardStyle = StyleSheet.create({
     right: 5,
     borderRadius: 8,
     backgroundColor: colors.darkGrey,
+  },
+  pageText: {
+    fontFamily: fonts.regular,
+    fontSize: 10,
   },
 });
 

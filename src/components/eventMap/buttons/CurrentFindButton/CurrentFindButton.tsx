@@ -1,4 +1,3 @@
-import Icon from 'components/common/Icon/Icon';
 import { TouchableOpacity } from 'react-native';
 import Text from '../../../common/Text/Text';
 import currentFindButtonStyles from './CurrentFindButton.style';
@@ -15,7 +14,7 @@ const CurrentFindButton = ({ isFindActive, handlePress }: Props) => {
         style={currentFindButtonStyles.container}
         onPress={handlePress}
       >
-        <Icon name="IconSend" fill="main" size={20} />
+        {/* <Icon name="IconSend" fill="main" size={20} /> */}
         <Text color="main" variant="body1">
           현 지도에서 검색
         </Text>

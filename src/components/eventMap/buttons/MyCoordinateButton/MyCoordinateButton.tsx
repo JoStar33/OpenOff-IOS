@@ -1,4 +1,3 @@
-import Icon from 'components/common/Icon/Icon';
 import { TouchableOpacity } from 'react-native';
 import myCoordinateButtonStyles from './MyCoordinateButton.style';
 
@@ -12,7 +11,7 @@ const MyCoordinateButton = ({ handlePress }: Props) => {
       onPress={handlePress}
       style={myCoordinateButtonStyles.container}
     >
-      <Icon name="IconMyCoordinate" size={40} fill="main" />
+      {/* <Icon name="IconMyCoordinate" size={40} fill="main" /> */}
     </TouchableOpacity>
   );
 };

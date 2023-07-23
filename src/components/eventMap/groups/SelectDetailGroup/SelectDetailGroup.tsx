@@ -1,4 +1,3 @@
-import Icon from 'components/common/Icon/Icon';
 import Text from 'components/common/Text/Text';
 import SelectControlButton from 'components/eventMap/buttons/SelectControlButton/SelectControlButton';
 import SelectDetailBox from 'components/eventMap/selectboxes/SelectDetailBox/SelectDetailBox';
@@ -40,7 +39,7 @@ const SelectDetailGroup = ({
         </Text>
         <View />
         <TouchableOpacity onPress={closeDetailGroup}>
-          <Icon name="IconClose" size={20} fill="grey" />
+          {/* <Icon name="IconClose" size={20} fill="grey" /> */}
         </TouchableOpacity>
       </View>
       <SelectDetailBox

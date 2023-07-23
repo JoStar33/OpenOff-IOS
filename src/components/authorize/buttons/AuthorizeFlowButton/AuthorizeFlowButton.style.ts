@@ -5,7 +5,7 @@ const authorizeFlowButtonStyles = StyleSheet.create({
     marginBottom: 30,
     ...Platform.select({
       ios: {
-        marginLeft: 15,
+        marginLeft: 5,
       },
       android: {
         position: 'absolute',

@@ -1,5 +1,4 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Icon from 'components/common/Icon/Icon';
 import { BottomTabMenu } from 'constants/menu';
 import EventMapScreen from 'screens/eventMap/EventMapScreen/EventMapScreen';
 import HomeScreen from 'screens/home/HomeScreen/HomeScreen';
@@ -31,12 +30,12 @@ const BottomTabNavigator = () => {
           tabBarLabelStyle: {
             ...textStyles.caption,
           },
-          tabBarIcon: ({ focused }) =>
-            Icon({
-              name: 'IconHome',
-              fill: focused ? 'white' : 'darkGrey',
-              size: 20,
-            }),
+          // tabBarIcon: ({ focused }) =>
+          //   Icon({
+          //     name: 'IconHome',
+          //     fill: focused ? 'white' : 'darkGrey',
+          //     size: 20,
+          //   }),
         }}
       />
       <Tab.Screen
@@ -48,12 +47,12 @@ const BottomTabNavigator = () => {
           tabBarLabelStyle: {
             ...textStyles.caption,
           },
-          tabBarIcon: ({ focused }) =>
-            Icon({
-              name: 'IconMap',
-              fill: focused ? 'white' : 'darkGrey',
-              size: 20,
-            }),
+          // tabBarIcon: ({ focused }) =>
+          //   Icon({
+          //     name: 'IconMap',
+          //     fill: focused ? 'white' : 'darkGrey',
+          //     size: 20,
+          //   }),
         }}
       />
       <Tab.Screen
@@ -65,12 +64,12 @@ const BottomTabNavigator = () => {
           tabBarLabelStyle: {
             ...textStyles.caption,
           },
-          tabBarIcon: ({ focused }) =>
-            Icon({
-              name: 'IconTicket',
-              fill: focused ? 'white' : 'darkGrey',
-              size: 20,
-            }),
+          // tabBarIcon: ({ focused }) =>
+          //   Icon({
+          //     name: 'IconTicket',
+          //     fill: focused ? 'white' : 'darkGrey',
+          //     size: 20,
+          //   }),
         }}
       />
       <Tab.Screen
@@ -82,12 +81,12 @@ const BottomTabNavigator = () => {
           tabBarLabelStyle: {
             ...textStyles.caption,
           },
-          tabBarIcon: ({ focused }) =>
-            Icon({
-              name: 'IconUser',
-              fill: focused ? 'white' : 'darkGrey',
-              size: 20,
-            }),
+          // tabBarIcon: ({ focused }) =>
+          //   Icon({
+          //     name: 'IconUser',
+          //     fill: focused ? 'white' : 'darkGrey',
+          //     size: 20,
+          //   }),
         }}
       />
     </Tab.Navigator>

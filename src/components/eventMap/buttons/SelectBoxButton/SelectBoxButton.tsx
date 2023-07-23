@@ -1,6 +1,5 @@
 import { TouchableOpacity, View } from 'react-native';
 import { colors } from 'styles/theme';
-import Icon from '../../../common/Icon/Icon';
 import Text from '../../../common/Text/Text';
 import selectBoxButtonStyles from './SelectBoxButton.style';
 
@@ -27,11 +26,11 @@ const SelectBoxButton = ({ label, handlePress, isActive }: Props) => {
         {label}
       </Text>
       <View style={selectBoxButtonStyles.arrowContainer}>
-        {isActive ? (
-          <Icon name="IconArrowUp" fill="main" size={17} />
+        {/* {isActive ? (
+          // <Icon name="IconArrowUp" fill="main" size={17} />
         ) : (
-          <Icon name="IconArrowDown" fill="white" size={17} />
-        )}
+          // <Icon name="IconArrowDown" fill="white" size={17} />
+        )} */}
       </View>
     </TouchableOpacity>
   );

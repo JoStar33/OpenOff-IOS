@@ -1,4 +1,3 @@
-import Icon from 'components/common/Icon/Icon';
 import AdvertisementCarousel from 'components/home/carousels/AdvertisementCarousel/AdvertisementCarousel';
 import CategoryButtonGroup from 'components/home/groups/CategoryButtonGroup/CategoryButtonGroup';
 import EventCardGroup from 'components/home/groups/EventCardGroup/EventCardGroup';
@@ -29,10 +28,10 @@ const HomeScreen = () => {
         <View />
         <View style={homeScreenStyles.controllerContainer}>
           <TouchableOpacity style={homeScreenStyles.controllerButton}>
-            <Icon name="IconBell" fill="white" size={20} />
+            {/* <Icon name="IconBell" fill="white" size={20} /> */}
           </TouchableOpacity>
           <TouchableOpacity>
-            <Icon name="IconHeart" fill="white" size={20} />
+            {/* <Icon name="IconHeart" fill="white" size={20} /> */}
           </TouchableOpacity>
         </View>
       </View>
