@@ -3,7 +3,8 @@ import PhoneCertificationForm from 'components/authorize/forms/PhoneCertificatio
 import Text from 'components/common/Text/Text';
 import UserInfoStatus from 'constants/join';
 import { AuthorizeMenu } from 'constants/menu';
-import { Dispatch, useState } from 'react';
+import * as Font from "expo-font";
+import { Dispatch, useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { AuthStackParamList } from 'types/apps/menu';
 import { Action } from 'types/join';
@@ -20,6 +21,15 @@ const PhoneCertificationScreen = ({ dispatch }: Props) => {
   const handleCertification = () => {
     console.log(phonenumber);
   };
+  useEffect(() => {
+    Font.loadAsync({
+      "Pretendard-Bold": require("../../../../assets/fonts/Pretendard-Bold.ttf"),
+      "Pretendard-SemiBold": require("../../../../assets/fonts/Pretendard-SemiBold.ttf"),
+      "Pretendard-Medium": require("../../../../assets/fonts/Pretendard-Medium.ttf"),
+      "Pretendard-Regular": require("../../../../assets/fonts/Pretendard-Regular.ttf"),
+      "Pretendard-Light": require("../../../../assets/fonts/Pretendard-Light.ttf"),
+    });
+  }, []);
   const handleAuthorizeFlow = () => {
     dispatch({
       type: UserInfoStatus.SET_PHONE_NUMBER,

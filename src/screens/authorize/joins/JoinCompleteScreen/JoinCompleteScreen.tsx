@@ -1,5 +1,6 @@
 import AuthorizeFlowButton from 'components/authorize/buttons/AuthorizeFlowButton/AuthorizeFlowButton';
-import React from 'react';
+import * as Font from "expo-font";
+import React, { useEffect } from 'react';
 import { Text, View } from 'react-native';
 import { JoinInfo } from 'types/join';
 import joinCompleteScreenStyles from './JoinCompleteScreen.style';
@@ -10,6 +11,15 @@ interface Props {
 }
 
 const JoinCompleteScreen = ({ state, setIsLogin }: Props) => {
+  useEffect(() => {
+    Font.loadAsync({
+      "Pretendard-Bold": require("../../../../assets/fonts/Pretendard-Bold.ttf"),
+      "Pretendard-SemiBold": require("../../../../assets/fonts/Pretendard-SemiBold.ttf"),
+      "Pretendard-Medium": require("../../../../assets/fonts/Pretendard-Medium.ttf"),
+      "Pretendard-Regular": require("../../../../assets/fonts/Pretendard-Regular.ttf"),
+      "Pretendard-Light": require("../../../../assets/fonts/Pretendard-Light.ttf"),
+    });
+  }, []);
   return (
     <View style={joinCompleteScreenStyles.container}>
       <View style={joinCompleteScreenStyles.titleContainer}>

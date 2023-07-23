@@ -1,14 +1,15 @@
-import { NavigationProp, useNavigation } from '@react-navigation/native';
-import AuthorizeFlowButton from 'components/authorize/buttons/AuthorizeFlowButton/AuthorizeFlowButton';
-import CheckButton from 'components/authorize/buttons/CheckButton/CheckButton';
-import UserInfoStatus from 'constants/join';
-import { AuthorizeMenu } from 'constants/menu';
-import { Dispatch, useEffect, useState } from 'react';
-import Text from 'components/common/Text/Text';
-import { View } from 'react-native';
-import { AuthStackParamList } from 'types/apps/menu';
-import { Action } from 'types/join';
-import agreeToTermScreenStyles from './AgreeToTermScreen.style';
+import { NavigationProp, useNavigation } from "@react-navigation/native";
+import AuthorizeFlowButton from "components/authorize/buttons/AuthorizeFlowButton/AuthorizeFlowButton";
+import CheckButton from "components/authorize/buttons/CheckButton/CheckButton";
+import Text from "components/common/Text/Text";
+import UserInfoStatus from "constants/join";
+import { AuthorizeMenu } from "constants/menu";
+import * as Font from "expo-font";
+import { Dispatch, useEffect, useState } from "react";
+import { View } from "react-native";
+import { AuthStackParamList } from "types/apps/menu";
+import { Action } from "types/join";
+import agreeToTermScreenStyles from "./AgreeToTermScreen.style";
 
 interface AgreeList {
   [key: string]: boolean;
@@ -32,6 +33,15 @@ const AgreeToTermScreen = ({ dispatch }: Props) => {
       return { ...checkTerm, [key]: !checkTerm[key] };
     });
   };
+  useEffect(() => {
+    Font.loadAsync({
+      "Pretendard-Bold": require("../../../../assets/fonts/Pretendard-Bold.ttf"),
+      "Pretendard-SemiBold": require("../../../../assets/fonts/Pretendard-SemiBold.ttf"),
+      "Pretendard-Medium": require("../../../../assets/fonts/Pretendard-Medium.ttf"),
+      "Pretendard-Regular": require("../../../../assets/fonts/Pretendard-Regular.ttf"),
+      "Pretendard-Light": require("../../../../assets/fonts/Pretendard-Light.ttf"),
+    });
+  }, []);
   useEffect(() => {
     if (
       term.termToMarketing &&
@@ -81,28 +91,28 @@ const AgreeToTermScreen = ({ dispatch }: Props) => {
         />
         <CheckButton
           value={term.termToTeenager}
-          handlePress={() => handleSingleTerm('termToTeenager')}
+          handlePress={() => handleSingleTerm("termToTeenager")}
           label="(필수) 만 14세 이상입니다."
         />
         <CheckButton
           value={term.termToUse}
-          handlePress={() => handleSingleTerm('termToUse')}
+          handlePress={() => handleSingleTerm("termToUse")}
           label="(필수) 서비스 이용약관"
         />
         <CheckButton
           value={term.termToPrivacy}
-          handlePress={() => handleSingleTerm('termToPrivacy')}
+          handlePress={() => handleSingleTerm("termToPrivacy")}
           label="(필수) 개인정보 수집 이용"
         />
         <CheckButton
           value={term.termToMarketing}
-          handlePress={() => handleSingleTerm('termToMarketing')}
+          handlePress={() => handleSingleTerm("termToMarketing")}
           label="(선택) 마케팅 정보 수신동의"
         />
       </View>
       <AuthorizeFlowButton
         handlePress={() => {
-          dispatch({ type: UserInfoStatus.SET_AGREE_TO_TERM, term: 'Y' });
+          dispatch({ type: UserInfoStatus.SET_AGREE_TO_TERM, term: "Y" });
           navigation.navigate(AuthorizeMenu.PhoneCertification);
         }}
         label="확인"

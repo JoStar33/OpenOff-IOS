@@ -1,11 +1,12 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import AuthorizeFlowButton from 'components/authorize/buttons/AuthorizeFlowButton/AuthorizeFlowButton';
 import FieldButtonGroup from 'components/authorize/groups/FieldButtonGroup/FieldButtonGroup';
+import Text from 'components/common/Text/Text';
 import UserInfoStatus from 'constants/join';
 import { AuthorizeMenu } from 'constants/menu';
 import field from 'data/lists/field';
+import * as Font from "expo-font";
 import { Dispatch, useEffect, useState } from 'react';
-import Text from 'components/common/Text/Text';
 import { Image, View } from 'react-native';
 import { Field } from 'types/apps/group';
 import { AuthStackParamList } from 'types/apps/menu';
@@ -31,6 +32,15 @@ const InterestFieldScreen = ({ dispatch }: Props) => {
     });
     return count;
   };
+  useEffect(() => {
+    Font.loadAsync({
+      "Pretendard-Bold": require("../../../../assets/fonts/Pretendard-Bold.ttf"),
+      "Pretendard-SemiBold": require("../../../../assets/fonts/Pretendard-SemiBold.ttf"),
+      "Pretendard-Medium": require("../../../../assets/fonts/Pretendard-Medium.ttf"),
+      "Pretendard-Regular": require("../../../../assets/fonts/Pretendard-Regular.ttf"),
+      "Pretendard-Light": require("../../../../assets/fonts/Pretendard-Light.ttf"),
+    });
+  }, []);
   return (
     <View style={interestFieldScreenStyles.container}>
       <Text variant="h1" color="white" style={interestFieldScreenStyles.title}>

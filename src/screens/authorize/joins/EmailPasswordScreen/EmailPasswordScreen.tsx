@@ -1,10 +1,11 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import AuthorizeFlowButton from 'components/authorize/buttons/AuthorizeFlowButton/AuthorizeFlowButton';
 import EssentialInput from 'components/authorize/inputs/EssentialInput/EssentialInput';
+import Text from 'components/common/Text/Text';
 import UserInfoStatus from 'constants/join';
 import { AuthorizeMenu } from 'constants/menu';
-import { Dispatch, useState } from 'react';
-import Text from 'components/common/Text/Text';
+import * as Font from "expo-font";
+import { Dispatch, useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { AuthStackParamList } from 'types/apps/menu';
 import { Action } from 'types/join';
@@ -19,6 +20,15 @@ const EmailPasswordScreen = ({ dispatch }: Props) => {
   const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  useEffect(() => {
+    Font.loadAsync({
+      "Pretendard-Bold": require("../../../../assets/fonts/Pretendard-Bold.ttf"),
+      "Pretendard-SemiBold": require("../../../../assets/fonts/Pretendard-SemiBold.ttf"),
+      "Pretendard-Medium": require("../../../../assets/fonts/Pretendard-Medium.ttf"),
+      "Pretendard-Regular": require("../../../../assets/fonts/Pretendard-Regular.ttf"),
+      "Pretendard-Light": require("../../../../assets/fonts/Pretendard-Light.ttf"),
+    });
+  }, []);
   const isActive =
     !validateEmail(email) &&
     email.length > 1 &&

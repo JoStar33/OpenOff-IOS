@@ -4,7 +4,8 @@ import {
 } from '@react-navigation/stack';
 import UserInfoStatus from 'constants/join';
 import { AuthorizeMenu } from 'constants/menu';
-import React, { Reducer, useReducer } from 'react';
+import * as Font from "expo-font";
+import React, { Reducer, useEffect, useReducer } from 'react';
 import { Platform } from 'react-native';
 import EmailPasswordFindScreen from 'screens/authorize/finds/EmailPasswordFindScreen/EmailPasswordFindScreen';
 import AgreeToTermScreen from 'screens/authorize/joins/AgreeToTermScreen/AgreeToTermScreen';
@@ -68,6 +69,15 @@ const AuthorizeNavigator = ({ setIsLogin }: Props) => {
     userInfoReducer,
     initialState,
   );
+  useEffect(() => {
+    Font.loadAsync({
+      "Pretendard-Bold": require("../assets/fonts/Pretendard-Bold.ttf"),
+      "Pretendard-SemiBold": require("../assets/fonts/Pretendard-SemiBold.ttf"),
+      "Pretendard-Medium": require("../assets/fonts/Pretendard-Medium.ttf"),
+      "Pretendard-Regular": require("../assets/fonts/Pretendard-Regular.ttf"),
+      "Pretendard-Light": require("../assets/fonts/Pretendard-Light.ttf"),
+    });
+  }, []);
   const authorizeScreenOption = {
     ...TransitionPresets.SlideFromRightIOS,
     cardStyle: {

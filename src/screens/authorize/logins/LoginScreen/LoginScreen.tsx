@@ -2,12 +2,12 @@ import JoinButton from 'components/authorize/buttons/JoinButton/JoinButton';
 import LoginButton from 'components/authorize/buttons/LoginButton/LoginButton';
 import SocialLoginButtonGroup from 'components/authorize/groups/SocialLoginButtonGroup/SocialLoginButtonGroup';
 import LoginInput from 'components/authorize/inputs/LoginInput/LoginInput';
-import { Dispatch, SetStateAction, useState } from 'react';
+import * as Font from "expo-font";
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { Image, View } from 'react-native';
 import { validateEmail, validatePassword } from 'utils/validate';
 import Text from '../../../../components/common/Text/Text';
 import loginScreenStyles from './LoginScreen.style';
-
 interface Props {
   setIsLogin: Dispatch<SetStateAction<boolean>>;
 }
@@ -26,6 +26,15 @@ const LoginScreen = ({ setIsLogin }: Props) => {
     if (!isActive) return;
     setIsLogin(true);
   };
+  useEffect(() => {
+    Font.loadAsync({
+      "Pretendard-Bold": require("../../../../assets/fonts/Pretendard-Bold.ttf"),
+      "Pretendard-SemiBold": require("../../../../assets/fonts/Pretendard-SemiBold.ttf"),
+      "Pretendard-Medium": require("../../../../assets/fonts/Pretendard-Medium.ttf"),
+      "Pretendard-Regular": require("../../../../assets/fonts/Pretendard-Regular.ttf"),
+      "Pretendard-Light": require("../../../../assets/fonts/Pretendard-Light.ttf"),
+    });
+  }, []);
   return (
     <View style={loginScreenStyles.container}>
       <Image

@@ -2,10 +2,11 @@ import { NavigationProp, useNavigation } from '@react-navigation/native';
 import AuthorizeFlowButton from 'components/authorize/buttons/AuthorizeFlowButton/AuthorizeFlowButton';
 import BaseInfoInput from 'components/authorize/inputs/BaseInfoInput/BaseInfoInput';
 import GenderInput from 'components/authorize/inputs/GenderInput/GenderInput';
+import Text from 'components/common/Text/Text';
 import UserInfoStatus from 'constants/join';
 import { AuthorizeMenu } from 'constants/menu';
-import { Dispatch, useState } from 'react';
-import Text from 'components/common/Text/Text';
+import * as Font from "expo-font";
+import { Dispatch, useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { AuthStackParamList } from 'types/apps/menu';
 import { Action } from 'types/join';
@@ -23,6 +24,15 @@ const UserInfoScreen = ({ dispatch }: Props) => {
   const [gender, setGender] = useState<'남' | '여'>('남');
   const isActive =
     !validateName(name) && !validateBirthday(birth) && name.length > 1;
+  useEffect(() => {
+    Font.loadAsync({
+      "Pretendard-Bold": require("../../../../assets/fonts/Pretendard-Bold.ttf"),
+      "Pretendard-SemiBold": require("../../../../assets/fonts/Pretendard-SemiBold.ttf"),
+      "Pretendard-Medium": require("../../../../assets/fonts/Pretendard-Medium.ttf"),
+      "Pretendard-Regular": require("../../../../assets/fonts/Pretendard-Regular.ttf"),
+      "Pretendard-Light": require("../../../../assets/fonts/Pretendard-Light.ttf"),
+    });
+  }, []);
   return (
     <View style={userInfoScreenStyles.container}>
       <View style={userInfoScreenStyles.titleContainer}>
