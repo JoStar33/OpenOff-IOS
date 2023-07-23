@@ -3,7 +3,8 @@ import { NavigationProp, useNavigation } from '@react-navigation/native';
 import Text from 'components/common/Text/Text';
 import CalendarButton from 'components/eventMap/buttons/CalendarButton/CalendarButton';
 import CalendarCard from 'components/eventMap/cards/CalendarCard/CalendarCard';
-import { useState } from 'react';
+import * as Font from "expo-font";
+import { useEffect, useState } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { MarkedDates } from 'react-native-calendars/src/types';
 import { useAppStore } from 'stores/app';
@@ -62,6 +63,15 @@ const DatePickScreen = () => {
     });
     navigation.goBack();
   };
+  useEffect(() => {
+    Font.loadAsync({
+      "Pretendard-Bold": require("../../../assets/fonts/Pretendard-Bold.ttf"),
+      "Pretendard-SemiBold": require("../../../assets/fonts/Pretendard-SemiBold.ttf"),
+      "Pretendard-Medium": require("../../../assets/fonts/Pretendard-Medium.ttf"),
+      "Pretendard-Regular": require("../../../assets/fonts/Pretendard-Regular.ttf"),
+      "Pretendard-Light": require("../../../assets/fonts/Pretendard-Light.ttf"),
+    });
+  }, []);
   return (
     <View style={datePickScreenStyles.container}>
       <View style={datePickScreenStyles.buttonContainer}>

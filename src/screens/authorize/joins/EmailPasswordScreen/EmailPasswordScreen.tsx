@@ -1,5 +1,5 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import AuthorizeFlowButton from 'components/authorize/buttons/AuthorizeFlowButton/AuthorizeFlowButton';
+import ScreenCover from 'components/authorize/covers/ScreenCover/ScreenCover';
 import EssentialInput from 'components/authorize/inputs/EssentialInput/EssentialInput';
 import Text from 'components/common/Text/Text';
 import UserInfoStatus from 'constants/join';
@@ -35,7 +35,14 @@ const EmailPasswordScreen = ({ dispatch }: Props) => {
     !validatePassword(password) &&
     password.length > 1;
   return (
-    <View style={emailPasswordScreenStyles.container}>
+    <ScreenCover authorizeButton={{
+      handlePress: () => {
+        dispatch({ type: UserInfoStatus.SET_AGREE_TO_TERM, term: 'Y' });
+        navigation.navigate(AuthorizeMenu.AgreeToTerm);
+      },
+      label: '확인',
+      isActive: isActive
+    }}>
       <View style={emailPasswordScreenStyles.titleContainer}>
         <Text color="white" variant="h1">
           이메일과 비밀번호를
@@ -58,15 +65,7 @@ const EmailPasswordScreen = ({ dispatch }: Props) => {
         setValue={setPassword}
         type="password"
       />
-      <AuthorizeFlowButton
-        handlePress={() => {
-          dispatch({ type: UserInfoStatus.SET_AGREE_TO_TERM, term: 'Y' });
-          navigation.navigate(AuthorizeMenu.AgreeToTerm);
-        }}
-        label="확인"
-        isActive={isActive}
-      />
-    </View>
+    </ScreenCover>
   );
 };
 

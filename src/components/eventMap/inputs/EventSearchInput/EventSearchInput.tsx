@@ -1,8 +1,7 @@
-import Icon from 'components/common/Icon/Icon';
 import { memo, useState } from 'react';
-import { TextInput, TouchableOpacity, View, Text } from 'react-native';
-import { colors } from 'styles/theme';
+import { Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { useAppStore } from 'stores/app';
+import { colors } from 'styles/theme';
 import eventSearchInput from './EventSearchInput.style';
 
 interface Props {
@@ -26,13 +25,13 @@ const EventSearchInput = ({ handleSearch, handleCalendar }: Props) => {
           onPress={handleCalendar}
           style={eventSearchInput.calendarButton}
         >
-          <Icon name="IconCalendar" size={18} fill="background" />
+          {/* <Icon name="IconCalendar" size={18} fill="background" /> */}
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => handleSearch(searchValue)}
           style={eventSearchInput.searchButton}
         >
-          <Icon name="IconSearch" size={21} fill="background" />
+          {/* <Icon name="IconSearch" size={21} fill="background" /> */}
         </TouchableOpacity>
         {startEndDate.endDay && startEndDate.startDay && (
           <View style={eventSearchInput.textContainer}>

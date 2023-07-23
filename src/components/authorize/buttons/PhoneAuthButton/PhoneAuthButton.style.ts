@@ -8,7 +8,7 @@ const phoneAuthButtonStyles = StyleSheet.create({
   activeButton: {
     width: 80,
     height: 40,
-    marginTop: 35,
+    marginTop: 46,
     marginLeft: 5,
     borderRadius: 27.5,
     justifyContent: 'center',
@@ -20,7 +20,7 @@ const phoneAuthButtonStyles = StyleSheet.create({
   nonActiveButton: {
     width: 80,
     height: 40,
-    marginTop: 35,
+    marginTop: 46,
     marginLeft: 10,
     borderRadius: 27.5,
     justifyContent: 'center',

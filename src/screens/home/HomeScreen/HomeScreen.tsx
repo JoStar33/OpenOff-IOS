@@ -4,10 +4,21 @@ import CategoryButtonGroup from 'components/home/groups/CategoryButtonGroup/Cate
 import EventCardGroup from 'components/home/groups/EventCardGroup/EventCardGroup';
 import advertisementList from 'data/lists/advertisementList';
 import eventList from 'data/lists/eventList';
+import * as Font from "expo-font";
+import { useEffect } from 'react';
 import { Image, ScrollView, TouchableOpacity, View } from 'react-native';
 import homeScreenStyles from './HomeScreen.style';
 
 const HomeScreen = () => {
+  useEffect(() => {
+    Font.loadAsync({
+      "Pretendard-Bold": require("../../../assets/fonts/Pretendard-Bold.ttf"),
+      "Pretendard-SemiBold": require("../../../assets/fonts/Pretendard-SemiBold.ttf"),
+      "Pretendard-Medium": require("../../../assets/fonts/Pretendard-Medium.ttf"),
+      "Pretendard-Regular": require("../../../assets/fonts/Pretendard-Regular.ttf"),
+      "Pretendard-Light": require("../../../assets/fonts/Pretendard-Light.ttf"),
+    });
+  }, []);
   return (
     <ScrollView style={homeScreenStyles.container}>
       <View style={homeScreenStyles.homeHeader}>

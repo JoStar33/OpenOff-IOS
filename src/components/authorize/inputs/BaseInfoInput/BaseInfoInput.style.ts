@@ -15,12 +15,12 @@ const baseInfoInputStyles = StyleSheet.create({
   inputTitle: {
     color: 'white',
     fontSize: 18,
-    marginBottom: 12,
+    marginBottom: 27,
     fontWeight: '600',
   },
   resetPosition: {
     position: 'relative',
-    bottom: 32,
+    bottom: 27,
   },
   resetImage: {
     width: 18,

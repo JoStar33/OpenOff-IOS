@@ -1,12 +1,18 @@
-import { Dimensions, StyleSheet } from 'react-native';
+import { Dimensions, Platform, StyleSheet } from 'react-native';
 
 const authorizeFlowButtonStyles = StyleSheet.create({
   absolutePosition: {
-    marginBottom: 100,
-    marginLeft: 15,
-    // position: 'absolute',
-    // bottom: 25,
-    // right: 15,
+    marginBottom: 30,
+    ...Platform.select({
+      ios: {
+        marginLeft: 15,
+      },
+      android: {
+        position: 'absolute',
+        bottom: 5,
+        right: 15,
+      },
+    }),
   },
   container: {
     width: Dimensions.get('window').width - 30,

@@ -11,6 +11,7 @@ import {
 import CurrentFindButton from 'components/eventMap/buttons/CurrentFindButton/CurrentFindButton';
 import MapBottomSheet from 'components/eventMap/sheets/MapBottomSheet/MapBottomSheet';
 import eventList from 'data/lists/eventList';
+import * as Font from "expo-font";
 import useEventMapSelector from 'hooks/eventMap/useEventMapSelector';
 import { useEffect, useState } from 'react';
 import { BackHandler, Dimensions, View } from 'react-native';
@@ -39,6 +40,15 @@ const FieldEventMapScreen = () => {
   );
   const [isFindActive, setIsFindActive] = useState<boolean>(false);
   const { callbackCoordinate } = useAppStore();
+  useEffect(() => {
+    Font.loadAsync({
+      "Pretendard-Bold": require("../../../assets/fonts/Pretendard-Bold.ttf"),
+      "Pretendard-SemiBold": require("../../../assets/fonts/Pretendard-SemiBold.ttf"),
+      "Pretendard-Medium": require("../../../assets/fonts/Pretendard-Medium.ttf"),
+      "Pretendard-Regular": require("../../../assets/fonts/Pretendard-Regular.ttf"),
+      "Pretendard-Light": require("../../../assets/fonts/Pretendard-Light.ttf"),
+    });
+  }, []);
   useEffect(() => {
     const backAction = () => {
       navigation.goBack();
