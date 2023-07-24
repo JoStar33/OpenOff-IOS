@@ -1,14 +1,13 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
+import ScreenCover from 'components/authorize/covers/ScreenCover/ScreenCover';
 import PhoneCertificationForm from 'components/authorize/forms/PhoneCertificationForm/PhoneCertificationForm';
-import Text from 'components/common/Text/Text';
-import UserInfoStatus from 'constants/join';
+import { UserInfoStatus } from 'constants/join';
 import { AuthorizeMenu } from 'constants/menu';
 import * as Font from "expo-font";
 import { Dispatch, useEffect, useState } from 'react';
-import { View } from 'react-native';
 import { AuthStackParamList } from 'types/apps/menu';
 import { Action } from 'types/join';
-import phoneCertificationScreenStyles from './PhoneCertificationScreen.style';
+import { validateAuthNumber, validatePhoneNumber } from 'utils/validate';
 
 interface Props {
   dispatch: Dispatch<Action>;
@@ -18,8 +17,16 @@ const PhoneCertificationScreen = ({ dispatch }: Props) => {
   const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
   const [phonenumber, setPhonenumber] = useState<string>('');
   const [authnumber, setAuthnumber] = useState<string>('');
+  const [retry, setRetry] = useState<boolean>(false);
   const handleCertification = () => {
-    console.log(phonenumber);
+    setRetry(true);
+  };
+  const handleAuthorizeFlow = () => {
+    dispatch({
+      type: UserInfoStatus.SET_PHONE_NUMBER,
+      phoneNumber: phonenumber,
+    });
+    navigation.navigate(AuthorizeMenu.Nickname);
   };
   useEffect(() => {
     Font.loadAsync({
@@ -30,31 +37,30 @@ const PhoneCertificationScreen = ({ dispatch }: Props) => {
       "Pretendard-Light": require("../../../../assets/fonts/Pretendard-Light.ttf"),
     });
   }, []);
-  const handleAuthorizeFlow = () => {
-    dispatch({
-      type: UserInfoStatus.SET_PHONE_NUMBER,
-      phoneNumber: phonenumber,
-    });
-    navigation.navigate(AuthorizeMenu.NickName);
-  };
+  const isActive =
+    !validatePhoneNumber(phonenumber) &&
+    phonenumber.length > 1 &&
+    !validateAuthNumber(authnumber) &&
+    authnumber.length > 1 &&
+    retry;
   return (
-    <View style={phoneCertificationScreenStyles.container}>
-      <Text
-        variant="h1"
-        color="white"
-        style={phoneCertificationScreenStyles.title}
-      >
-        휴대폰 인증을 해주세요.
-      </Text>
+    <ScreenCover
+      authorizeButton={{
+        handlePress: handleAuthorizeFlow,
+        label: '다음',
+        isActive,
+      }}
+      titleElements={['휴대폰 인증을 해주세요.']}
+    >
       <PhoneCertificationForm
+        retry={retry}
         handleCertification={handleCertification}
-        handleAuthorizeFlow={handleAuthorizeFlow}
         phonenumber={phonenumber}
         setPhonenumber={setPhonenumber}
         authnumber={authnumber}
         setAuthnumber={setAuthnumber}
       />
-    </View>
+    </ScreenCover>
   );
 };
 

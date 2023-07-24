@@ -3,7 +3,8 @@ import ScreenCover from 'components/authorize/covers/ScreenCover/ScreenCover';
 import EssentialInput from 'components/authorize/inputs/EssentialInput/EssentialInput';
 import TimerText from 'components/authorize/texts/TimerText/TimerText';
 import Text from 'components/common/Text/Text';
-import { useState } from 'react';
+import * as Font from "expo-font";
+import { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import {
   validateAuthNumber,
@@ -30,6 +31,15 @@ const PasswordFindScreen = () => {
     active: false,
     reactive: false,
   });
+  useEffect(() => {
+    Font.loadAsync({
+      "Pretendard-Bold": require("../../../../assets/fonts/Pretendard-Bold.ttf"),
+      "Pretendard-SemiBold": require("../../../../assets/fonts/Pretendard-SemiBold.ttf"),
+      "Pretendard-Medium": require("../../../../assets/fonts/Pretendard-Medium.ttf"),
+      "Pretendard-Regular": require("../../../../assets/fonts/Pretendard-Regular.ttf"),
+      "Pretendard-Light": require("../../../../assets/fonts/Pretendard-Light.ttf"),
+    });
+  }, []);
   const [isAuthorize, setIsAuthorize] = useState<boolean>(false);
   const isActive =
     !validateEmail(emailAddress) &&
@@ -37,7 +47,8 @@ const PasswordFindScreen = () => {
     !validatePhoneNumber(phonenumber) &&
     phonenumber.length > 1 &&
     !validateAuthNumber(authnumber) &&
-    authnumber.length > 1;
+    authnumber.length > 1 &&
+    retry;
   const isConfirmPassword =
     !validatePassword(password) &&
     password.length > 1 &&

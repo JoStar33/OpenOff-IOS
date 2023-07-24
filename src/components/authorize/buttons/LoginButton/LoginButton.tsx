@@ -1,4 +1,4 @@
-import { Pressable } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { colors } from 'styles/theme';
 import Text from '../../../common/Text/Text';
 import loginButtonStyles from './LoginButton.style';
@@ -10,7 +10,7 @@ interface Props {
 
 const LoginButton = ({ handlePress, isActive }: Props) => {
   return (
-    <Pressable
+    <TouchableOpacity
       onPress={handlePress}
       style={{
         ...loginButtonStyles.container,
@@ -20,7 +20,7 @@ const LoginButton = ({ handlePress, isActive }: Props) => {
       <Text color={isActive ? 'white' : 'grey'} variant="h4">
         로그인
       </Text>
-    </Pressable>
+    </TouchableOpacity>
   );
 };
 

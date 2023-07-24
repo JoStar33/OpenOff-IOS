@@ -1,9 +1,8 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import AuthorizeFlowButton from 'components/authorize/buttons/AuthorizeFlowButton/AuthorizeFlowButton';
+import ScreenCover from 'components/authorize/covers/ScreenCover/ScreenCover';
 import BaseInfoInput from 'components/authorize/inputs/BaseInfoInput/BaseInfoInput';
 import GenderInput from 'components/authorize/inputs/GenderInput/GenderInput';
-import Text from 'components/common/Text/Text';
-import UserInfoStatus from 'constants/join';
+import { UserInfoStatus } from 'constants/join';
 import { AuthorizeMenu } from 'constants/menu';
 import * as Font from "expo-font";
 import { Dispatch, useEffect, useState } from 'react';
@@ -22,8 +21,6 @@ const UserInfoScreen = ({ dispatch }: Props) => {
   const [name, setName] = useState<string>('');
   const [birth, setBirth] = useState<string>('2000-00-00');
   const [gender, setGender] = useState<'남' | '여'>('남');
-  const isActive =
-    !validateName(name) && !validateBirthday(birth) && name.length > 1;
   useEffect(() => {
     Font.loadAsync({
       "Pretendard-Bold": require("../../../../assets/fonts/Pretendard-Bold.ttf"),
@@ -33,13 +30,22 @@ const UserInfoScreen = ({ dispatch }: Props) => {
       "Pretendard-Light": require("../../../../assets/fonts/Pretendard-Light.ttf"),
     });
   }, []);
+  const isActive =
+    !validateName(name) && !validateBirthday(birth) && name.length > 1;
   return (
-    <View style={userInfoScreenStyles.container}>
-      <View style={userInfoScreenStyles.titleContainer}>
-        <Text variant="h1" color="white" style={userInfoScreenStyles.title}>
-          오픈오프 이용을 위해 정보를 입력해주세요.
-        </Text>
-      </View>
+    <ScreenCover
+      titleElements={['오픈오프 이용을 위해', '정보를 입력해주세요.']}
+      authorizeButton={{
+        handlePress: () => {
+          dispatch({ type: UserInfoStatus.SET_NAME, name });
+          dispatch({ type: UserInfoStatus.SET_GENDER, gender });
+          dispatch({ type: UserInfoStatus.SET_BIRTH, birth });
+          navigation.navigate(AuthorizeMenu.InterestField);
+        },
+        label: '확인',
+        isActive,
+      }}
+    >
       <BaseInfoInput
         label="이름"
         value={name}
@@ -58,17 +64,7 @@ const UserInfoScreen = ({ dispatch }: Props) => {
         />
         <GenderInput value={gender} setValue={setGender} />
       </View>
-      <AuthorizeFlowButton
-        handlePress={() => {
-          dispatch({ type: UserInfoStatus.SET_NAME, name });
-          dispatch({ type: UserInfoStatus.SET_GENDER, gender });
-          dispatch({ type: UserInfoStatus.SET_BIRTH, birth });
-          navigation.navigate(AuthorizeMenu.InterestField);
-        }}
-        label="확인"
-        isActive={isActive}
-      />
-    </View>
+    </ScreenCover>
   );
 };
 

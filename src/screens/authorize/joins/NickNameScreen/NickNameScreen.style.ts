@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { colors } from 'styles/theme';
 
-const nickNameScreenStyles = StyleSheet.create({
+const nicknameScreenStyles = StyleSheet.create({
   container: {
     flex: 1,
     position: 'relative',
@@ -11,8 +11,8 @@ const nickNameScreenStyles = StyleSheet.create({
   title: {
     color: colors.white,
     fontSize: 25,
-    height: 35,
-    width: 350,
+    paddingVertical: 10,
+    width: '100%',
   },
   titleContainer: {
     marginBottom: 40,
@@ -20,4 +20,4 @@ const nickNameScreenStyles = StyleSheet.create({
   },
 });
 
-export default nickNameScreenStyles;
+export default nicknameScreenStyles;

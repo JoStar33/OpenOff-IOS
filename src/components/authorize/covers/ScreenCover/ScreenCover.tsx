@@ -1,4 +1,5 @@
 import AuthorizeFlowButton from 'components/authorize/buttons/AuthorizeFlowButton/AuthorizeFlowButton';
+import AuthorizeFlowTitle from 'components/authorize/texts/AuthorizeFlowTitle/AuthorizeFlowTitle';
 import { ReactNode, SetStateAction, useEffect, useState } from 'react';
 import {
   KeyboardAvoidingView,
@@ -9,6 +10,7 @@ import {
 import screenCoverStyles from './ScreenCover.style';
 
 interface Props {
+  titleElements?: string[];
   children?: ReactNode;
   authorizeButton: {
     handlePress: () => void;
@@ -17,7 +19,11 @@ interface Props {
   };
 }
 
-const ScreenCover = ({ children, authorizeButton }: Props) => {
+const ScreenCover = ({
+  titleElements = [],
+  children,
+  authorizeButton,
+}: Props) => {
   const [statusBarHeight, setStatusBarHeight] = useState<number>(0);
   const { StatusBarManager } = NativeModules;
   useEffect(() => {
@@ -32,29 +38,24 @@ const ScreenCover = ({ children, authorizeButton }: Props) => {
     <KeyboardAvoidingView
       behavior="padding"
       keyboardVerticalOffset={statusBarHeight + 40}
-      style={screenCoverStyles.scrollContainer}
+      style={screenCoverStyles.container}
     >
       {Platform.OS === 'ios' ? (
-        <ScrollView>
+        <ScrollView style={screenCoverStyles.scrollContainer}>
+          <AuthorizeFlowTitle titleElements={titleElements} />
           {children}
         </ScrollView>
       ) : (
         <>
+          <AuthorizeFlowTitle titleElements={titleElements} />
           {children}
-          <AuthorizeFlowButton
-            handlePress={authorizeButton.handlePress}
-            label={authorizeButton.label}
-            isActive={authorizeButton.isActive}
-          />
         </>
       )}
-      {Platform.OS === 'ios' && (
-        <AuthorizeFlowButton
-          handlePress={authorizeButton.handlePress}
-          label={authorizeButton.label}
-          isActive={authorizeButton.isActive}
-        />
-      )}
+      <AuthorizeFlowButton
+        handlePress={authorizeButton.handlePress}
+        label={authorizeButton.label}
+        isActive={authorizeButton.isActive}
+      />
     </KeyboardAvoidingView>
   );
 };

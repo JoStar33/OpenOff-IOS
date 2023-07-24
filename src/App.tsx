@@ -7,7 +7,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import AuthorizeNavigator from "navigators/AuthorizeNavigator";
 import Navigator from "navigators/Navigator";
 import { useState } from 'react';
+import { SafeAreaView } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { colors } from "styles/theme";
 
 const App = () => {
   const [isLogin, setIsLogin] = useState<boolean>(false);
@@ -21,15 +23,17 @@ const App = () => {
   //   });
   // }, []);
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <NavigationContainer>
-        {isLogin ? (
-          <Navigator />
-        ) : (
-          <AuthorizeNavigator setIsLogin={setIsLogin} />
-        )}
-      </NavigationContainer>
-    </GestureHandlerRootView>
+    <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <NavigationContainer>
+          {isLogin ? (
+            <Navigator />
+          ) : (
+            <AuthorizeNavigator setIsLogin={setIsLogin} />
+          )}
+        </NavigationContainer>
+      </GestureHandlerRootView>
+    </SafeAreaView>
     // <View style={{flex: 1, backgroundColor: 'black'}}>
     //   <EventSearchInput handleSearch={() => {}} handleCalendar={() => {}}/>
     // </View>

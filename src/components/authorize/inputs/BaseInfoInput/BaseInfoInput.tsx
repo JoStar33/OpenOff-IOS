@@ -1,8 +1,8 @@
 import ErrorText from 'components/authorize/texts/ErrorText/ErrorText';
+import Icon from 'components/common/Icon/Icon';
 import { Dispatch, SetStateAction, useState } from 'react';
 import {
   GestureResponderEvent,
-  Image,
   Text,
   TouchableOpacity,
   View,
@@ -62,34 +62,13 @@ const BaseInfoInput = ({
           style={{ ...baseInfoInputStyles.resetPosition, left: width - 18 }}
         >
           <TouchableOpacity onPress={resetValue}>
-            <Image
-              style={baseInfoInputStyles.resetImage}
-              source={require('../../../../assets/images/xbutton.png')}
-            />
+            <Icon name="IconExitCircle" size={18} fill="main" />
           </TouchableOpacity>
         </View>
         {!focusMode && (
           <ErrorText validation={validation} value={value} width={width} />
         )}
       </View>
-      {/* {focusMode && (
-        <DateTimePicker
-          modal
-          title="날짜를 선택해주세요."
-          mode="date"
-          textColor="white"
-          theme="dark"
-          open={open}
-          date={new Date(value)}
-          onConfirm={(date) => {
-            setOpen(false);
-            setValue(dateFormatter(date));
-          }}
-          onCancel={() => {
-            setOpen(false);
-          }}
-        />
-      )} */}
     </>
   );
 };

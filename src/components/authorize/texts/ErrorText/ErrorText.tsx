@@ -1,5 +1,5 @@
 import Text from 'components/common/Text/Text';
-import { View } from 'react-native';
+import { Platform, View } from 'react-native';
 import errorTextStyles from './ErrorText.style';
 
 interface Props {
@@ -10,10 +10,9 @@ interface Props {
 
 const ErrorText = ({ validation, value, width = 350 }: Props) => {
   const calcFontSize = () => {
-    const validate = validation(value)
-    if (!validate)
-      return 12;
-    return validate.length > 29 ? 10 : 12
+    const validate = validation(value);
+    if (!validate) return 12;
+    return validate.length > 29 ? 10 : 12;
   };
   return (
     <View>
@@ -21,7 +20,12 @@ const ErrorText = ({ validation, value, width = 350 }: Props) => {
         <Text
           color="error"
           variant="caption"
-          style={{ ...errorTextStyles.text, width, fontSize: calcFontSize() }}
+          // eslint-disable-next-line react-native/no-inline-styles
+          style={{
+            ...errorTextStyles.text,
+            width,
+            fontSize: Platform.OS === 'android' ? 12 : calcFontSize(),
+          }}
         >
           {validation(value)}
         </Text>

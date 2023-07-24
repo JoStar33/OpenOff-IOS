@@ -1,4 +1,4 @@
-import JoinButton from 'components/authorize/buttons/JoinButton/JoinButton';
+import JoinButton from 'components/authorize/buttons/JoinAndFindButton/JoinAndFindButton';
 import LoginButton from 'components/authorize/buttons/LoginButton/LoginButton';
 import SocialLoginButtonGroup from 'components/authorize/groups/SocialLoginButtonGroup/SocialLoginButtonGroup';
 import LoginInput from 'components/authorize/inputs/LoginInput/LoginInput';
@@ -20,8 +20,6 @@ const LoginScreen = ({ setIsLogin }: Props) => {
     !validatePassword(password) &&
     emailAddress.length >= 1 &&
     password.length >= 1;
-  const kakaoLogin = () => {
-  };
   const handleCommonLogin = () => {
     if (!isActive) return;
     setIsLogin(true);
@@ -60,7 +58,9 @@ const LoginScreen = ({ setIsLogin }: Props) => {
         또는
       </Text>
       <SocialLoginButtonGroup
-        kakaoLogin={kakaoLogin}
+        kakaoLogin={() => {
+          return false;
+        }}
         naverLogin={() => {
           return false;
         }}

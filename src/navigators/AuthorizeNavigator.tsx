@@ -2,7 +2,7 @@ import {
   createStackNavigator,
   TransitionPresets,
 } from '@react-navigation/stack';
-import UserInfoStatus from 'constants/join';
+import { UserInfoStatus } from 'constants/join';
 import { AuthorizeMenu } from 'constants/menu';
 import React, { Reducer, useReducer } from 'react';
 import { Platform } from 'react-native';
@@ -38,7 +38,7 @@ const userInfoReducer = (state: JoinInfo, action: Action): JoinInfo => {
     case UserInfoStatus.SET_GENDER:
       return { ...state, gender: action.gender };
     case UserInfoStatus.SET_NICK_NAME:
-      return { ...state, nickName: action.nickName };
+      return { ...state, nickname: action.nickname };
     case UserInfoStatus.SET_EMAIL_ADDRESS_PASSWORD:
       return {
         ...state,
@@ -58,7 +58,7 @@ const AuthorizeNavigator = ({ setIsLogin }: Props) => {
     birth: '',
     agreeToTerm: '',
     phoneNumber: '',
-    nickName: '',
+    nickname: '',
     gender: '',
     emailAddress: '',
     password: '',
@@ -132,7 +132,7 @@ const AuthorizeNavigator = ({ setIsLogin }: Props) => {
         options={{
           headerTitle: '',
         }}
-        name={AuthorizeMenu.NickName}
+        name={AuthorizeMenu.Nickname}
       >
         {() => <NickNameScreen dispatch={dispatch} />}
       </Stack.Screen>

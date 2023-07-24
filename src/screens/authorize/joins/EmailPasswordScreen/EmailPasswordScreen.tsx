@@ -1,16 +1,13 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import ScreenCover from 'components/authorize/covers/ScreenCover/ScreenCover';
 import EssentialInput from 'components/authorize/inputs/EssentialInput/EssentialInput';
-import Text from 'components/common/Text/Text';
-import UserInfoStatus from 'constants/join';
+import { UserInfoStatus } from 'constants/join';
 import { AuthorizeMenu } from 'constants/menu';
 import * as Font from "expo-font";
 import { Dispatch, useEffect, useState } from 'react';
-import { View } from 'react-native';
 import { AuthStackParamList } from 'types/apps/menu';
 import { Action } from 'types/join';
 import { validateEmail, validatePassword } from 'utils/validate';
-import emailPasswordScreenStyles from './EmailPasswordScreen.style';
 
 interface Props {
   dispatch: Dispatch<Action>;
@@ -35,22 +32,20 @@ const EmailPasswordScreen = ({ dispatch }: Props) => {
     !validatePassword(password) &&
     password.length > 1;
   return (
-    <ScreenCover authorizeButton={{
-      handlePress: () => {
-        dispatch({ type: UserInfoStatus.SET_AGREE_TO_TERM, term: 'Y' });
-        navigation.navigate(AuthorizeMenu.AgreeToTerm);
-      },
-      label: '확인',
-      isActive: isActive
-    }}>
-      <View style={emailPasswordScreenStyles.titleContainer}>
-        <Text color="white" variant="h1">
-          이메일과 비밀번호를
-        </Text>
-        <Text color="white" variant="h1">
-          입력해주세요.
-        </Text>
-      </View>
+    <ScreenCover
+      authorizeButton={{
+        handlePress: () => {
+          dispatch({
+            type: UserInfoStatus.SET_EMAIL_ADDRESS_PASSWORD,
+            emailPassword: { email, password },
+          });
+          navigation.navigate(AuthorizeMenu.AgreeToTerm);
+        },
+        label: '확인',
+        isActive,
+      }}
+      titleElements={['이메일과 비밀번호를', '입력해주세요.']}
+    >
       <EssentialInput
         validation={validateEmail}
         label="이메일 주소"

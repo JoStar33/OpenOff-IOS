@@ -1,4 +1,5 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
+import { fonts } from 'styles/theme';
 
 const baseInfoInputStyles = StyleSheet.create({
   container: {
@@ -7,20 +8,22 @@ const baseInfoInputStyles = StyleSheet.create({
     position: 'relative',
   },
   input: {
-    width: 365,
-    fontSize: 18,
+    width: '100%',
+    fontSize: 15,
+    paddingVertical: 10,
+    fontFamily: fonts.semibold,
     borderBottomWidth: 1,
     backgroundColor: 'transparent',
   },
   inputTitle: {
     color: 'white',
     fontSize: 18,
-    marginBottom: 27,
+    marginBottom: Platform.OS === 'android' ? 10 : 27,
     fontWeight: '600',
   },
   resetPosition: {
     position: 'relative',
-    bottom: 27,
+    bottom: Platform.OS === 'android' ? 32 : 27,
   },
   resetImage: {
     width: 18,

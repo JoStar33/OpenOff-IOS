@@ -1,10 +1,12 @@
 import { StyleSheet } from 'react-native';
 
 const screenCoverStyles = StyleSheet.create({
-  scrollContainer: {
+  container: {
     flex: 1,
-    padding: 10,
   },
+  scrollContainer: {
+    padding: 25,
+  }
 });
 
 export default screenCoverStyles;
