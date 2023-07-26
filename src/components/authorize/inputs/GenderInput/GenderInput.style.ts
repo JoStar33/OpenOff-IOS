@@ -1,14 +1,21 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
+import { fonts } from 'styles/theme';
 
 const genderInputStyles = StyleSheet.create({
   container: {
-    marginBottom: 22,
     marginLeft: 7,
-    width: 250,
     flexDirection: 'column',
+    ...Platform.select({
+      ios: {
+        marginTop: -5,
+      }
+    }),
   },
   title: {
     marginBottom: 21,
+    color: 'white',
+    fontSize: 18,
+    fontFamily: fonts.semibold,
   },
   genderButtonContainer: {
     flexDirection: 'row',

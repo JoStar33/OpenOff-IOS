@@ -10,8 +10,7 @@ const userInfoScreenStyles = StyleSheet.create({
   },
   detailUserInfo: {
     flexDirection: 'row',
-    width: 360,
-    alignItems: 'center',
+    marginTop: 70
   },
 });
 

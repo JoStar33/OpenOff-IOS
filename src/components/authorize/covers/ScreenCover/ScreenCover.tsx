@@ -6,6 +6,7 @@ import {
   NativeModules,
   Platform,
   ScrollView,
+  View,
 } from 'react-native';
 import screenCoverStyles from './ScreenCover.style';
 
@@ -46,10 +47,10 @@ const ScreenCover = ({
           {children}
         </ScrollView>
       ) : (
-        <>
+        <View style={screenCoverStyles.scrollContainer}>
           <AuthorizeFlowTitle titleElements={titleElements} />
           {children}
-        </>
+        </View>
       )}
       <AuthorizeFlowButton
         handlePress={authorizeButton.handlePress}

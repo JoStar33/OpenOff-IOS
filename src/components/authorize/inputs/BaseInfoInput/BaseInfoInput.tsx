@@ -1,5 +1,4 @@
 import ErrorText from 'components/authorize/texts/ErrorText/ErrorText';
-import Icon from 'components/common/Icon/Icon';
 import { Dispatch, SetStateAction, useState } from 'react';
 import {
   GestureResponderEvent,
@@ -62,7 +61,7 @@ const BaseInfoInput = ({
           style={{ ...baseInfoInputStyles.resetPosition, left: width - 18 }}
         >
           <TouchableOpacity onPress={resetValue}>
-            <Icon name="IconExitCircle" size={18} fill="main" />
+            {/* <Icon name="IconExitCircle" size={18} fill="main" /> */}
           </TouchableOpacity>
         </View>
         {!focusMode && (

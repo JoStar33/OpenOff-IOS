@@ -1,5 +1,4 @@
 import ErrorText from 'components/authorize/texts/ErrorText/ErrorText';
-import Icon from 'components/common/Icon/Icon';
 import Text from 'components/common/Text/Text';
 import React, { Dispatch, ReactNode, SetStateAction } from 'react';
 import { Dimensions, TextInput, View } from 'react-native';
@@ -29,8 +28,8 @@ const EssentialInput = ({
 }: Props) => {
   const clacWidth =
     children && type === 'phonenumber'
-      ? Dimensions.get('window').width - 130
-      : Dimensions.get('window').width - 40;
+      ? Dimensions.get('window').width - 140
+      : Dimensions.get('window').width - 50;
   const handleChangeText = (
     textValue: string,
     onChange: Dispatch<SetStateAction<string>>,
@@ -78,11 +77,11 @@ const EssentialInput = ({
                     !
                   </Text>
                 )}
-              {!validation(value) &&
+              {/* {!validation(value) &&
                 value.length > 0 &&
                 type !== 'authnumber' && (
-                  <Icon name="IconCheck" size={20} fill="green" />
-                )}
+                  // <Icon name="IconCheck" size={20} fill="green" />
+                )} */}
             </View>
           </View>
           {children}
